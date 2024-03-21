@@ -1,0 +1,20 @@
+load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
+
+java_library(
+    name = "main",
+    srcs = ["src/Main.java"],
+)
+
+java_test_suite(
+    name = "tests",
+    srcs = ["test/MainTest.java"],
+    deps = [":main"],
+)
+
+java_test(
+    name = "test_individual",
+    size = "small",
+    srcs = ["test/MainTest.java"],
+    test_class = "test.MainTest",
+    deps = [":main"],
+)
